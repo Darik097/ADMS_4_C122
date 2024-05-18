@@ -19,16 +19,15 @@ body {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-    .theory-block h2 {
-        color: #32CD32;
-        text-align: center;
-    }
+.theory-block h2 {
+    color: #32CD32;
+    text-align: center;
+}
 
-    .theory-block p {
-        text-align: justify;
-        margin-bottom: 0;
-    }
-
+.theory-block p {
+    text-align: justify;
+    margin-bottom: 0;
+}
 
 
 h1, h2 {
@@ -88,7 +87,7 @@ input[type="radio"] {
 
 .matrix-input {
     margin-bottom: 8px;
-    width: 60px;
+    width: 70px;
     height: 40px;
     text-align: center;
     border: 1px solid #ccc;
@@ -97,10 +96,10 @@ input[type="radio"] {
     transition: border-color 0.3s ease;
 }
 
-    .matrix-input:focus {
-        border-color: #32CD32; /* Зеленый неоновый */
-        outline: none;
-    }
+.matrix-input:focus {
+    border-color: #32CD32; /* Зеленый неоновый */
+    outline: none;
+}
 
 .calc {
     text-align: center;
@@ -176,4 +175,11 @@ input[type="radio"] {
 .scroll-animation {
     opacity: 1 !important;
     transform: translateY(0) !important;
+}
+
+#cy {
+    width: 800px;
+    height: 600px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
 }

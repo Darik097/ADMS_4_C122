@@ -160,7 +160,7 @@
                             
                             <li class="item-102"><a href="/home">Главная</a></li>
                             
-                            <li class="item-102"><a href="/contact">Вид бинарных отношений</a></li>
+                            <li class="item-102"><a href="/Var1Binary">Вид бинарных отношений</a></li>
 
                             <li class="item-103"><a href="/sbo">Свойство бинарных отношений</a></li>
                             <li class="item-104"><a href="/max">Максимальный поток в сети</a></li>

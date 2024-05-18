@@ -20,7 +20,7 @@
     <RootNamespace>BottleWebProject_C122_4_ADMS</RootNamespace>
     <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env3|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,7 +90,7 @@
     <Content Include="static\scripts\_references.js" />
     <Content Include="views\about.tpl" />
     <Content Include="views\asymmetryAntitransitivityReverse.tpl" />
-    <Content Include="views\contact.tpl" />
+    <Content Include="views\Var1Binary.tpl" />
     <Content Include="views\gc.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />

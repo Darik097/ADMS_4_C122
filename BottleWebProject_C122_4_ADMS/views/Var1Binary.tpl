@@ -101,12 +101,6 @@
         }
 
         
-
-
-
-
-
-
     </style>
 
 </head>
@@ -203,9 +197,9 @@
             <h1>Калькулятор</h1>
   
             <!-- Ваш HTML для калькулятора -->
-            <p class="calc" for="matrix-size" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Выберите размер матрицы:</p>
+            <p class="calc" for="matrix-size" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">Выберите размер матрицы:</p>
             <select id="matrix-size" 
-                style="display: block; margin: 0 auto; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1em;"
+                style="display: block; margin: 0 auto; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1em; color: #32CD32;"
                 onchange="handleMatrixSizeChange()">
                 <option value="2">2x2</option>
                 <option value="3">3x3</option>
@@ -219,24 +213,21 @@
             </select>
             <div id="matrix-container" style="display: block; margin: 0 auto; text-align: center; font-size: 1.1em;"></div>
             <div class="button-container">
-                <div class="button" onclick="generateMatrixInputs(parseInt(document.getElementById('matrix-size').value));">Решить</div>
+                <button onclick="checkEquivalenceRelation()">Check Equivalence Relation</button>
             </div>
             <div class="theory-block">
-            <h2>Решение</h2>
+                <h2>Решение</h2>
+                <div id="result"></div>
+                <div id="cy"></div>
             </div>
         </div>
     </div>
-
-
-
-
-
             </div>
         </div>
     </div>
     <footer class="footer text-center">
         <div class="container">
-            <p style="color: #f0f0f0;">&copy; 2024 Все права защищены</p>
+            <p style="color: #f0f0f0; text-align: center; ">&copy; 2024 Все права защищены</p>
         </div>
     </footer>
 

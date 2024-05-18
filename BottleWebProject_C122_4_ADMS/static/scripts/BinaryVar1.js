@@ -38,6 +38,135 @@ function handleMatrixSizeChange() {
     generateMatrixInputs(size);
 }
 
+// Функция для считывания данных из матрицы
+function readMatrix(size) {
+    const matrix = [];
+    const inputs = document.getElementsByClassName('matrix-input');
+    let index = 0;
+    for (let i = 0; i < size; i++) {
+        const row = [];
+        for (let j = 0; j < size; j++) {
+            row.push(parseInt(inputs[index].value) || 0);
+            index++;
+        }
+        matrix.push(row);
+    }
+    return matrix;
+}
+
+// Функция для проверки рефлексивности
+function isReflexive(matrix, size) {
+    for (let i = 0; i < size; i++) {
+        if (matrix[i][i] !== 1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Функция для проверки симметричности
+function isSymmetric(matrix, size) {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            if (matrix[i][j] !== matrix[j][i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Функция для проверки транзитивности
+function isTransitive(matrix, size) {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            for (let k = 0; k < size; k++) {
+                if (matrix[i][j] && matrix[j][k] && !matrix[i][k]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+// Функция для построения графа
+function drawGraph(matrix, size) {
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: [],
+        style: [
+            {
+                selector: 'node',
+                style: {
+                    'background-color': '#fff',
+                    'label': 'data(id)',
+                    'color': '#000'  // Цвет текста
+                }
+            },
+            {
+                selector: 'edge',
+                style: {
+                    'width': 3,
+                    'line-color': '#fff',
+                    'target-arrow-color': '#fff',
+                    'target-arrow-shape': 'triangle',
+                    'color': '#fff'  // Цвет текста на ребре
+                }
+            }
+        ],
+        layout: {
+            name: 'grid',
+            rows: size
+        }
+    });
+
+    for (let i = 0; i < size; i++) {
+        cy.add({ group: 'nodes', data: { id: `${i + 1}` } });
+    }
+
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            if (matrix[i][j] === 1) {
+                cy.add({ group: 'edges', data: { source: `${i + 1}`, target: `${j + 1}` } });
+            }
+        }
+    }
+
+    cy.layout({ name: 'grid', rows: size }).run();
+}
+
+// Функция для проверки эквивалентного отношения и нахождения дополнительного отношения
+function checkEquivalenceRelation() {
+    const size = parseInt(document.getElementById('matrix-size').value);
+    const matrix = readMatrix(size);
+
+    const reflexive = isReflexive(matrix, size);
+    const symmetric = isSymmetric(matrix, size);
+    const transitive = isTransitive(matrix, size);
+
+    let resultText = `reflexive: ${reflexive ? 'Да' : 'Нет'}<br>`;
+    resultText += `symmetric: ${symmetric ? 'Да' : 'Нет'}<br>`;
+    resultText += `transitive: ${transitive ? 'Да' : 'Нет'}<br>`;
+
+    if (reflexive && symmetric && transitive) {
+        resultText += "Отношение является эквивалентным.";
+    } else {
+        resultText += "Отношение не является эквивалентным.";
+    }
+
+    document.getElementById('result').innerHTML = resultText;
+
+    // Построить граф
+    drawGraph(matrix, size);
+}
+
+
+// Инициализация матрицы по умолчанию
+window.onload = function () {
+    handleMatrixSizeChange();
+}
+
 
 // Функция для инициализации
 function initialize() {
