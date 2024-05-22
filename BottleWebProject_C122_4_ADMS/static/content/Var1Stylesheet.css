@@ -68,10 +68,10 @@ input[type="radio"] {
     display: none;
 }
 
-    input[type="radio"]:checked + label {
-        background-color: #ffffff;
-        color: #32CD32; /* Зеленый неоновый */
-    }
+input[type="radio"]:checked + label {
+    background-color: #ffffff;
+    color: #32CD32; /* Зеленый неоновый */
+}
 
 #theorySection {
     display: block;
@@ -79,27 +79,15 @@ input[type="radio"] {
 
 #calculatorSection {
     display: none;
+    text-align: center;
 }
 
 .section {
     display: none;
 }
 
-.matrix-input {
-    margin-bottom: 8px;
-    width: 70px;
-    height: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
 
-.matrix-input:focus {
-    border-color: #32CD32; /* Зеленый неоновый */
-    outline: none;
-}
+
 
 .calc {
     text-align: center;
@@ -114,7 +102,7 @@ input[type="radio"] {
 .button {
     display: inline-block;
     background-color: #000000; /* Черный фон */
-    color: 32CD32; /* Белый текст */
+    color: #32CD32; /* Белый текст */
     padding: 10px 20px;
     border-radius: 5px;
     margin-right: 10px;
@@ -124,11 +112,11 @@ input[type="radio"] {
     font-size: 1.2em;
 }
 
-    .button:hover {
-        background-color: #32CD32; /* Зеленый фон при наведении */
-        color: #000000; /* Белый текст */
-        border-color: #32CD32; /* Зеленая рамка при наведении */
-    }
+.button:hover {
+    background-color: #32CD32; /* Зеленый фон при наведении */
+    color: #000000; /* Белый текст */
+    border-color: #32CD32; /* Зеленая рамка при наведении */
+}
 
 
 .content-container {
@@ -178,8 +166,153 @@ input[type="radio"] {
 }
 
 #cy {
-    width: 800px;
+    width: 60%;
     height: 600px;
-    border: 1px solid #ccc;
-    margin-top: 20px;
+    border: 2px solid #000;
+    text-align: center;
+    margin: auto; /* Выравниваем по центру */
+    position: relative;
+    overflow: hidden; /* Чтобы граф не выходил за пределы контейнера */
 }
+
+#cy canvas, #cy div {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.button-matrix {
+    display: inline-block;
+    background-color: #000000; /* Черный фон */
+    color: #32CD32; /* Белый текст */
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавлен переход для цвета рамки */
+    border: 2px solid #FFFFFF; /* Белая рамка */
+    font-size: 1.2em;
+}
+
+#matrix-size {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1em;
+    color: #32CD32;
+    width: 120px; /* Увеличиваем ширину */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+    appearance: none; /* Убираем стандартную стрелку */
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="%2332CD32" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M3.204 5h9.592a.5.5 0 0 1 .374.832l-4.796 5.5a.5.5 0 0 1-.748 0l-4.796-5.5A.5.5 0 0 1 3.204 5z"/></svg>') no-repeat right 10px center;
+    background-size: 14px 14px;
+    padding-right: 30px; /* Делаем отступ для стрелки */
+}
+
+#matrix-container {
+    display: flex;
+    margin: 0 auto 20px; /* Добавляем отступ снизу */
+    text-align: center;
+    font-size: 1.1em;
+    justify-content: center;
+}
+
+
+.input {
+    margin: 4px; /* Добавляем фиксированные отступы */
+    width: 50px; /* Фиксированная ширина для поля ввода */
+    height: 32px; /* Фиксированная высота для поля ввода */
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+/* Добавляем медиа-запрос для адаптивности */
+@media (max-width: 768px) {
+    .matrix-input {
+        width: 15vw; /* Относительная ширина для мобильных устройств */
+        height: 8vw; /* Относительная высота для мобильных устройств */
+    }
+}
+
+/* Ограничиваем ввод только символами "0" или "1" */
+.matrix-input:invalid {
+    border-color: #f00; /* Цвет границы при недопустимом вводе */
+}
+
+.matrix-input:valid {
+    border-color: #ccc; /* Цвет границы при допустимом вводе */
+}
+
+.matrix-input:focus {
+    border-color: #32CD32; /* Зеленый неоновый */
+    outline: none;
+}
+
+#message {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 10, 10, 0.9); /* Почти черный цвет фона */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: black !important; /* Черный цвет для контента */
+    border: 2px solid white !important; /* Белая рамка */
+    z-index: 1;
+    border-radius: 10px; /* Закругленные края */
+    margin: 5% auto;
+    padding: 20px;
+    max-width: 600px;
+    text-align: center;
+    color: #32CD32; /* Белый цвет текста */
+}
+
+    .modal-content p {
+        text-align: center; /* Центрируем текст */
+        color: white !important;
+        z-index: 1;
+    }
+
+    .modal-content pre {
+        color: white; /* Белый цвет текста для элемента pre */
+        z-index: 1;
+    }
+
+.close {
+    color: white !important; /* Белый цвет для крестика */
+    float: right !important;
+    font-size: 38px !important;
+    font-weight: bold;
+    z-index: 1;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #ccc; /* Цвет крестика при наведении */
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+
+
+

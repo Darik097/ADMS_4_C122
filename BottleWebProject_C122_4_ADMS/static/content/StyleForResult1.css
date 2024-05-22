@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    color: #32CD32; /* зеленый цвет текста */
+    font-family: 'Arial', sans-serif; /* устанавливаем шрифт */
+    text-align: center; /* выравниваем содержимое по центру */
+    padding: 50px; /* добавляем отступы вокруг содержимого */
+}
+
+h2 {
+    font-size: 48px; /* увеличиваем размер заголовка */
+    color: white;
+}
+
+h3 {
+    font-size: 32px; /* увеличиваем размер заголовка */
+    color: white;
+}
+
+p {
+    font-size: 24px; /* увеличиваем размер обычного текста */
+    margin: 10px 0; /* добавляем отступы между абзацами */
+}
+
+img {
+    max-width: 100%; /* устанавливаем максимальную ширину изображения */
+    height: auto; /* автоматически рассчитываем высоту изображения */
+    display: block; /* делаем изображение блочным элементом */
+    margin: 0 auto; /* выравниваем изображение по центру */
+    margin-top: 10px; /* добавляем отступ сверху */
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto; /* выравниваем таблицу по центру */
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    background-color: #000000; /* Черный фон */
+    color: #32CD32; /* Белый текст */
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавлен переход для цвета рамки */
+    border: 2px solid #FFFFFF; /* Белая рамка */
+    font-size: 1.2em;
+}
+
+    .button:hover {
+        background-color: #32CD32; /* Зеленый фон при наведении */
+        color: #000000; /* Белый текст */
+        border-color: #32CD32; /* Зеленая рамка при наведении */
+    }

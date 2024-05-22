@@ -4,6 +4,7 @@ Routes and views for the bottle application.
 
 from bottle import route, view
 from datetime import datetime
+import BinaryVar1
 
 @route('/')
 @route('/home')
@@ -53,6 +54,16 @@ def about():
 
 @route('/max')
 @view('max')
+def about():
+    """Renders the about page."""
+    return dict(
+        title='Максимальный поток в сети',
+        message='Your application description page.',
+        year=datetime.now().year
+    )
+
+@route('/Var1_Solution')
+@view('Var1_Solution')
 def about():
     """Renders the about page."""
     return dict(

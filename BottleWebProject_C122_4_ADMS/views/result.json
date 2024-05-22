@@ -1,0 +1,1 @@
+{"status": "success", "size": 2, "matrix": [[1, 0], [1, 1]], "reflexive": "\u0414\u0430", "symmetric": "\u041d\u0435\u0442", "transitive": "\u0414\u0430", "additional_relation": [[0, 1], [0, 0]], "equivalent": "\u041d\u0435\u0442", "graph_image": "/graph.png", "additional_relation_graph_image": "/additional_relation_graph.png"}

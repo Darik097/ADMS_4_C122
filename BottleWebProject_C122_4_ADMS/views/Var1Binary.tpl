@@ -32,34 +32,28 @@
 	<script src="https://gg.looknewsite.ru//assets/context.js"></script>
 	<script src="https://gg.looknewsite.ru//assets/ammap.js"></script>
 	<script src="https://gg.looknewsite.ru//assets/russiaLow.js"></script>
+    <script src="https://unpkg.com/cytoscape@3.19.0/dist/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-capable" content="YES">
 
-	<style>
-            
-
-         
+	<style>        
         #navbar {
         background-color: black;
         }
 
-        
-
-
-       body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0 auto; /* Центрирование по горизонтали */
-    padding: 0;
-    width: 90%; /* Ширина 70% */
-    background-color: #000; /* Черный фон */
-    color: #fff; /* Белый текст */
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0 auto; /* Центрирование по горизонтали */
+            padding: 0;
+            width: 90%; /* Ширина 70% */
+            background-color: #000; /* Черный фон */
+            color: #fff; /* Белый текст */
    
-}
-
-
-        
+        }
 
         #top_menu .nav.menu li {
             white-space: nowrap; /* Предотвращает перенос элементов на новую строку */
@@ -82,25 +76,18 @@
                 opacity: 1; /* Конечная прозрачность */
                 transform: translateY(0); /* Конечное положение */
             }
-        }
+        }      
 
-        
-
-       #top_menu .nav.menu li a:hover {
+        #top_menu .nav.menu li a:hover {
             color: #32CD32; /* Здесь указываете желаемый зеленый цвет текста */
         }
-
-
-
 
         #top_menu ul {
             display: flex;
             flex-wrap: nowrap; /* запрещаем перенос элементов на новую строку */
             justify-content: space-between; /* равномерное распределение элементов по горизонтали */
             align-items: center; /* выравнивание элементов по вертикали */
-        }
-
-        
+        }  
     </style>
 
 </head>
@@ -125,7 +112,7 @@
                             
                             <li class="item-102"><a href="/home">Главная</a></li>
                             
-                            <li class="item-102"><a href="/contact">Вид бинарных отношений</a></li>
+                            <li class="item-102"><a href="/Var1Binary">Вид бинарных отношений</a></li>
 
                             <li class="item-103"><a href="/sbo">Свойство бинарных отношений</a></li>
                             <li class="item-104"><a href="/max">Максимальный поток в сети</a></li>
@@ -146,6 +133,23 @@
         <div class="button" id="showTheory" onClick="showTheory()">Теория</div>
         <div class="button" id="showCalculator" onClick="showCalculator()">Калькулятор</div>
     </div>
+
+
+    <!-- Modal -->
+            <div id="exampleModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Пример содержимого файла</h2>
+                    <pre>
+0,1,0
+1,0,1
+0,1,0
+                    </pre>
+                    <p>Файл должен содержать только числа 0 или 1, разделенные запятыми, без пустых строк.</p>
+                    <button class="button" onclick="proceedToFileUpload()">Все понятно</button>
+                </div>
+            </div>
+
 
     <div class="content-container">
         <div id="theorySection" class="section">
@@ -193,38 +197,44 @@
         </div>
 
         <div id="calculatorSection" class="section">
-            <!-- Калькулятор -->
             <h1>Калькулятор</h1>
-  
-            <!-- Ваш HTML для калькулятора -->
-            <p class="calc" for="matrix-size" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">Выберите размер матрицы:</p>
-            <select id="matrix-size" 
-                style="display: block; margin: 0 auto; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1em; color: #32CD32;"
-                onchange="handleMatrixSizeChange()">
-                <option value="2">2x2</option>
-                <option value="3">3x3</option>
-                <option value="4">4x4</option>
-                <option value="5">5x5</option>
-                <option value="6">6x6</option>
-                <option value="7">7x7</option>
-                <option value="8">8x8</option>
-                <option value="9">9x9</option>
-                <option value="10">10x10</option>
-            </select>
-            <div id="matrix-container" style="display: block; margin: 0 auto; text-align: center; font-size: 1.1em;"></div>
-            <div class="button-container">
-                <button onclick="checkEquivalenceRelation()">Check Equivalence Relation</button>
-            </div>
-            <div class="theory-block">
+            <form id="matrix-form" action="/home" method="post" onsubmit="submitForm(event)">
+                <p class="calc" for="matrix-size" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Выберите размер матрицы:</p>
+                <select id="matrix-size" name="size" onchange="generateMatrixInputs()">
+                    <option value="2">2x2</option>
+                    <option value="3">3x3</option>
+                    <option value="4">4x4</option>
+                    <option value="5">5x5</option>
+                    <option value="6">6x6</option>
+                    <option value="7">7x7</option>
+                    <option value="8">8x8</option>
+                    <option value="9">9x9</option>
+                    <option value="10">10x10</option>
+                </select>
+                <div id="matrix-container"></div>
+                <input type="file" id="file-input" accept=".csv" style="display: none;" onchange="handleFileUpload(event)">
+                <div id="message"></div>
+                <div class="button-container">
+                    <button class="button" type="button" onclick="generateRandomMatrix()">Сгенерировать</button>
+                    <input type="file" id="fileInput" accept=".txt" style="display: none;" onchange="loadFromFile()">
+    
+                    <button class="button" type="button" onclick="document.getElementById('fileInput').click();">Загрузить из файла</button>
+                    <button class="button" type="submit">Решить</button>
+
+                </div>
+            </form>
+            <div class="theory-block" id="solution-block">
                 <h2>Решение</h2>
                 <div id="result"></div>
                 <div id="cy"></div>
             </div>
+
+           
+
+
         </div>
     </div>
-            </div>
-        </div>
-    </div>
+            
     <footer class="footer text-center">
         <div class="container">
             <p style="color: #f0f0f0; text-align: center; ">&copy; 2024 Все права защищены</p>
