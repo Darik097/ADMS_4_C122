@@ -20,7 +20,7 @@
     <RootNamespace>BottleWebProject_C122_4_ADMS</RootNamespace>
     <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env3|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|env4|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env5|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>unittest</TestFramework>
     <UnitTestPattern>test*.py</UnitTestPattern>
     <UnitTestRootDirectory>.</UnitTestRootDirectory>
@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
-    <Compile Include="asymmetry_antitransitivity_ inverseRelation.py">
+    <Compile Include="asymmetry_antitransitivity_inverseRelation.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BinaryVar1.py">
@@ -106,7 +106,10 @@
     <Content Include="static\scripts\Result1.js" />
     <Content Include="static\scripts\_references.js" />
     <Content Include="views\about.tpl" />
-    <Content Include="views\asymmetryAntitransitivityReverse.tpl" />
+    <Content Include="views\sbo.tpl" />
+    <Content Include="views\solutionSBO.tpl">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\test.tpl">
       <SubType>Code</SubType>
     </Content>
@@ -153,6 +156,15 @@
       <Id>env4</Id>
       <Version>3.9</Version>
       <Description>env4 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env5\">
+      <Id>env5</Id>
+      <Version>3.9</Version>
+      <Description>env5 (Python 3.9 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

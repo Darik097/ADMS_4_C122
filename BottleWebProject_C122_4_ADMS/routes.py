@@ -5,7 +5,7 @@ Routes and views for the bottle application.
 from bottle import route, view
 from datetime import datetime
 import BinaryVar1
-
+import asymmetry_antitransitivity_inverseRelation
 @route('/')
 @route('/home')
 @view('index')
@@ -34,14 +34,15 @@ def about():
         message='Your application description page.',
         year=datetime.now().year
     )
-@route('/asymmetryAntitransitivityReverse')
-@view('asymmetryAntitransitivityReverse')
+@route('/sbo')
+@view('sbo')
 def asymmetryAntitransitivityReverse():
     return dict(
         title='Assymetric Antitransitivity Reverse',
         message='Your application math page.',
         year=datetime.now().year
     )
+
 @route('/gc')
 @view('gc')
 def about():
@@ -70,4 +71,13 @@ def about():
         title='Максимальный поток в сети',
         message='Your application description page.',
         year=datetime.now().year
+    )
+@route('/solutionSBO')
+@view('solutionSBO')
+def about():
+    """Renders the about page."""
+    return dict(
+       title='Решение и нахождение обратного решения',
+       message='Your application description page.',
+       year=datetime.now().year
     )

@@ -1,51 +1,61 @@
-﻿
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    margin: 0 auto;
+﻿body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    margin: 0 auto; /* Центрирование по горизонтали */
     padding: 0;
-    width: 70%;
-    background-color: #000;
-    color: #fff;
+    width: 90%; /* Ширина 70% */
+    background-color: #000 !important; /* Черный фон */
+    color: #fff !important; /* Белый текст */
 }
+
 .theory-block {
     border-radius: 10px;
     border: 2px solid #32CD32;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
     background-color: transparent;
     opacity: 0;
-    transform: translateY(20px); 
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
+    .theory-block h2 {
+        color: #32CD32;
+        text-align: center;
+    }
+
+    .theory-block p {
+        text-align: justify;
+        margin-bottom: 0;
+    }
+
+
 h1, h2 {
     text-align: center;
-    color: #32CD32; 
+    color: #32CD32; /* Зеленый неоновый */
     font-size: 1.5em;
 }
 
-p, ol { 
-   
+p, ol {
     width: 100%;
     box-sizing: border-box;
     text-align: justify;
     margin-bottom: 20px;
 }
 
-
 .formula {
     background-color: #3E3E3E;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
     font-style: italic;
-    text-align: center;
+    text-align: justify;
+    width: 500px;
+    float: left;
 }
 
 label {
     display: inline-block;
-    background-color: #32CD32; 
+    background-color: #32CD32;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -61,7 +71,7 @@ input[type="radio"] {
 
     input[type="radio"]:checked + label {
         background-color: #ffffff;
-        color: #32CD32; 
+        color: #32CD32; /* Зеленый неоновый */
     }
 
 #theorySection {
@@ -69,31 +79,17 @@ input[type="radio"] {
     border-radius: 15px;
     padding: 20px;
     display: block;
+    overflow: hidden !important;
 }
 
 #calculatorSection {
     display: none;
+    text-align: center;
 }
 
 .section {
     display: none;
 }
-
-.matrix-input {
-    margin-bottom: 8px;
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-    .matrix-input:focus {
-        border-color: #32CD32; 
-        outline: none;
-    }
 
 .calc {
     text-align: center;
@@ -107,30 +103,30 @@ input[type="radio"] {
 
 .button {
     display: inline-block;
-    background-color: #000000; 
-    color: 32CD32; 
+    background-color: #000000; /* Черный фон */
+    color: #32CD32; /* Белый текст */
     padding: 10px 20px;
     border-radius: 5px;
     margin-right: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
-    border: 2px solid #FFFFFF; 
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавлен переход для цвета рамки */
+    border: 2px solid #FFFFFF; /* Белая рамка */
     font-size: 1.2em;
 }
 
     .button:hover {
-        background-color: #32CD32; 
-        color: #000000; 
-        border-color: #32CD32; 
+        background-color: #32CD32; /* Зеленый фон при наведении */
+        color: #000000; /* Белый текст */
+        border-color: #32CD32; /* Зеленая рамка при наведении */
     }
 
 
 .content-container {
-    text-align: center;
+    text-align: center !important;
 }
 
 #matrix-size option:hover {
-    background-color: #32CD32; 
+    background-color: #32CD32; /* Зеленый неоновый */
     color: #ffffff;
 }
 
@@ -166,3 +162,107 @@ input[type="radio"] {
     animation: slide-in-bottom-right 2s ease-out forwards;
 }
 
+.scroll-animation {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+#cy {
+    width: 60%;
+    height: 600px;
+    border: 2px solid #000;
+    text-align: center;
+    margin: auto; /* Выравниваем по центру */
+    position: relative;
+    overflow: hidden; /* Чтобы граф не выходил за пределы контейнера */
+}
+
+    #cy canvas, #cy div {
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+
+.button-matrix {
+    display: inline-block;
+    background-color: #000000; /* Черный фон */
+    color: #32CD32; /* Белый текст */
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавлен переход для цвета рамки */
+    border: 2px solid #FFFFFF; /* Белая рамка */
+    font-size: 1.2em;
+}
+
+#matrix-size {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1em;
+    color: #32CD32;
+    width: 120px; /* Увеличиваем ширину */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+    appearance: none; /* Убираем стандартную стрелку */
+    background-size: 14px 14px;
+    padding-right: 30px; /* Делаем отступ для стрелки */
+}
+
+#matrix-container {
+    display: flex;
+    margin: 0 auto 20px; /* Добавляем отступ снизу */
+    text-align: center;
+    font-size: 1.1em;
+    justify-content: center;
+}
+
+
+.matrix-input {
+    margin: 1vw 1vw 1vw 1vw; /* Используем относительные единицы для отступов */
+    width: 7vw; /* Используем относительные единицы для ширины */
+    height: 7vh; /* Используем относительные единицы для высоты */
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+    /* Ограничиваем ввод только символами "0" или "1" */
+    .matrix-input:invalid {
+        border-color: #f00; /* Цвет границы при недопустимом вводе */
+    }
+
+    .matrix-input:valid {
+        border-color: #ccc; /* Цвет границы при допустимом вводе */
+    }
+
+    .matrix-input:focus {
+        border-color: #32CD32; /* Зеленый неоновый */
+        outline: none;
+    }
+
+td.matrix-input {
+    text-align: center; /* Центрируем содержимое ячеек */
+    padding: 0; /* Убираем внешние отступы */
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #ccc;
+    text-align: center; /* Центрируем содержимое ячеек */
+    border-radius: 5px;
+}
+
+#solution-block {
+    display: none;
+}
